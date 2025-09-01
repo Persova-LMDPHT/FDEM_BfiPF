@@ -89,8 +89,8 @@ namespace Processing
 	}
 
 	// Calculate receivers bounding box with rounding
-	int CalculateModelInternalBounds(const vector<Model::Receiver> &receivers, vector<Model::Generator> &generators, double *gaps, double *steps, Model::GeoBox<double> &bounds)
-	{
+	int CalculateModelInternalBounds2D(const vector<Model::Receiver>& receivers, vector<Model::Generator>& generators, double* gaps, double* steps, Model::GeoBox<double>& bounds)
+	{                                                                                                                                                                             
 		try
 		{
 			if (receivers.size() == 0 && generators.size() == 0) { write_to_log("Error : CalculateModelInternalBounds : No receivers and generators\n"); return 1; }
@@ -143,9 +143,9 @@ namespace Processing
 
 	}
 
-	// Calculate receivers bounding box
-	int CalculateModelInternalBounds(const vector<Model::Receiver> &receivers, vector<Model::Generator> &generators, Model::GeoBox<double> &bounds)
-	{
+		// Calculate receivers bounding box                                                                                                              
+		int CalculateModelInternalBounds2D(const vector<Model::Receiver>& receivers, vector<Model::Generator>& generators, Model::GeoBox<double>& bounds)
+		{                                                                                                                                                
 		try
 		{
 			if (receivers.size() == 0 && generators.size() == 0) { write_to_log("Error : CalculateModelInternalBounds : No receivers and generators\n"); return 1; }
@@ -183,6 +183,83 @@ namespace Processing
 
 	}
 
+	// Calculate receivers bounding box with rounding                                                                                                                                                           
+	int CalculateModelInternalBounds(const vector<Model::Receiver> &receivers, vector<Model::Generator> &generators, double *gaps, double *steps, Model::GeoBox<double> &bounds)                                
+	{                                                                                                                                                                                                           
+		try                                                                                                                                                                                                 
+		{                                                                                                                                                                                                   
+			if (receivers.size() == 0 /*&& generators.size() == 0*/) { write_to_log("Error : CalculateModelInternalBounds : No receivers and generators\n"); return 1; }                                
+                                                                                                                                                                                                                    
+			bounds.coordinates[0] = bounds.coordinates[2] = bounds.coordinates[4] = DBL_MAX;                                                                                                            
+			bounds.coordinates[1] = bounds.coordinates[3] = bounds.coordinates[5] = -DBL_MAX;                                                                                                           
+                                                                                                                                                                                                                    
+			for (auto receiver = receivers.begin(); receiver != receivers.end(); ++receiver)                                                                                                            
+			{                                                                                                                                                                                           
+				for (int direction = 0; direction < 3; direction++)                                                                                                                                 
+				{                                                                                                                                                                                   
+					if (bounds.coordinates[direction * 2 + 0] > receiver->coordinates[direction]) bounds.coordinates[direction * 2 + 0] = receiver->coordinates[direction];                     
+					if (bounds.coordinates[direction * 2 + 1] < receiver->coordinates[direction]) bounds.coordinates[direction * 2 + 1] = receiver->coordinates[direction];                     
+				}                                                                                                                                                                                   
+			}                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+			for (int direction = 0; direction < 3; direction++)                                                                                                                                         
+			{                                                                                                                                                                                           
+				bounds.coordinates[direction * 2 + 0] -= gaps[direction];                                                                                                                           
+				bounds.coordinates[direction * 2 + 1] += gaps[direction];                                                                                                                           
+                                                                                                                                                                                                                    
+				double d = bounds.coordinates[direction * 2 + 1] - bounds.coordinates[direction * 2 + 0];                                                                                           
+				int stepsCount = (int)(d / steps[direction] + 0.5);                                                                                                                                 
+				if (fabs(stepsCount * steps[direction] - d) > 1e-7)                                                                                                                                 
+				{                                                                                                                                                                                   
+					stepsCount++;                                                                                                                                                               
+					bounds.coordinates[direction * 2 + 0] = BasicOperations::RoundDouble_(bounds.coordinates[direction * 2 + 0], steps[direction]);                                             
+					bounds.coordinates[direction * 2 + 1] = bounds.coordinates[direction * 2 + 0] + stepsCount * steps[direction];                                                              
+				}                                                                                                                                                                                   
+			}                                                                                                                                                                                           
+                                                                                                                                                                                                                    
+			return 0;                                                                                                                                                                                   
+		}                                                                                                                                                                                                   
+		catch (exception ex)                                                                                                                                                                                
+		{                                                                                                                                                                                                   
+			write_to_log("Error : CalculateModelInternalBounds : ");                                                                                                                                    
+			write_to_log(ex.what());                                                                                                                                                                    
+			write_to_log("\n");                                                                                                                                                                         
+			return 1;                                                                                                                                                                                   
+		}                                                                                                                                                                                                   
+                                                                                                                                                                                                                    
+	}                                                                                                                                                                                                           
+                                                                                                                                                                                                                    
+	// Calculate receivers bounding box                                                                                                                                                                         
+	int CalculateModelInternalBounds(const vector<Model::Receiver> &receivers, vector<Model::Generator> &generators, Model::GeoBox<double> &bounds)                                                             
+	{                                                                                                                                                                                                           
+		try                                                                                                                                                                                                 
+		{                                                                                                                                                                                                   
+			if (receivers.size() == 0 /*&& generators.size() == 0*/) { write_to_log("Error : CalculateModelInternalBounds : No receivers and generators\n"); return 1; }                                
+                                                                                                                                                                                                                    
+			bounds.coordinates[0] = bounds.coordinates[2] = bounds.coordinates[4] = DBL_MAX;                                                                                                            
+			bounds.coordinates[1] = bounds.coordinates[3] = bounds.coordinates[5] = -DBL_MAX;                                                                                                           
+                                                                                                                                                                                                                    
+			for (auto receiver = receivers.begin(); receiver != receivers.end(); ++receiver)                                                                                                            
+			{                                                                                                                                                                                           
+				for (int direction = 0; direction < 3; direction++)                                                                                                                                 
+				{                                                                                                                                                                                   
+					if (bounds.coordinates[direction * 2 + 0] > receiver->coordinates[direction]) bounds.coordinates[direction * 2 + 0] = receiver->coordinates[direction];                     
+					if (bounds.coordinates[direction * 2 + 1] < receiver->coordinates[direction]) bounds.coordinates[direction * 2 + 1] = receiver->coordinates[direction];                     
+				}                                                                                                                                                                                   
+			}                                                                                                                                                                                           
+                                                                                                                                                                                                                    			              			                   			                   			                   			                   			                   			                   			                                                                                                                                                                                                                                      
+			return 0;                                                                                                                                                                                   
+		}                                                                                                                                                                                                   
+		catch (exception ex)                                                                                                                                                                                
+		{                                                                                                                                                                                                   
+			write_to_log("Error : CalculateModelInternalBounds : ");                                                                                                                                    
+			write_to_log(ex.what());                                                                                                                                                                    
+			write_to_log("\n");                                                                                                                                                                         
+			return 1;                                                                                                                                                                                   
+		}                                                                                                                                                                                                   
+                                                                                                                                                                                                                    
+	}                                                                                                                                                                                                           
+                                                                                                                                                                                                                    
 	// Calculatemodel bounding box
 	int CalculateModelBounds3D(vector<Model::Receiver> &receivers, vector<Model::Generator> &generators, vector<Model::GeoLayer<double>> &layers, Mesh3D::Settings &meshSettings, double **bounds)
 	{
@@ -225,8 +302,8 @@ namespace Processing
 			double gaps[3]{ meshSettings.gapFromReceivers[0], meshSettings.gapFromReceivers[0], meshSettings.gapFromReceivers[1] };
 			Model::GeoBox<double> internalBoundsNotRounded;
 			Model::GeoBox<double> internalBounds;
-			if (CalculateModelInternalBounds(vector<Model::Receiver>(), generators, internalBoundsNotRounded) != 0) { write_to_log("Error : CalculateModelBounds2D : Could not calculate receiver bounds\n"); return 1; }
-			if (CalculateModelInternalBounds(vector<Model::Receiver>(), generators, gaps, steps, internalBounds) != 0) { write_to_log("Error : CalculateModelBounds2D : Could not calculate receiver bounds\n"); return 1; }
+			if (CalculateModelInternalBounds2D(vector<Model::Receiver>(), generators, internalBoundsNotRounded) != 0) { write_to_log("Error : CalculateModelBounds2D : Could not calculate receiver bounds\n"); return 1; }
+			if (CalculateModelInternalBounds2D(vector<Model::Receiver>(), generators, gaps, steps, internalBounds) != 0) { write_to_log("Error : CalculateModelBounds2D : Could not calculate receiver bounds\n"); return 1; }
 
 			for (int direction = 0; direction < 3; direction += 2)
 			{
