@@ -21,34 +21,34 @@ Build (two ways):
 
 ## How to build
 
-Already assembled programs (modules) for Windows are in folder 'Folder_for_Calculations' in https://github.com/Persova-LMDPHT/FDEM_BfiPF.
+Already assembled programs (modules) for Windows are in folder ['Folder_for_Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF.
 
-To rebuild all programs (modules), download the contents of the 'CODE' folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The 'CODE' folder contains the source code for all modules (each module is located in its own folder within the 'CODE' folder, with the same folder name as the module). 
+To rebuild all programs (modules), download the contents of the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The 'CODE' folder contains the source code for all modules (each module is located in its own folder within the 'CODE' folder, with the same folder name as the module). 
 
 To build all programs (modules) you can use one of the following methods:
 
 1. MinGW ("Minimalist GNU for Windows") 
-   - To build modules using MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) you can use the following makefile.bat as an instruction (you must first install Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
+   - To build modules using MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) you can use the following [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) as an instruction (you must first install Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
 
-   - In makefile.bat, first change the path to the folder with `*`.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
+   - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat), first change the path to the folder with `*`.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
 
-   - Run makefile.bat in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). Errors and warnings during module compilation are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
+   - Run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). Errors and warnings during module compilation are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
 
-   - The makefile.bat command will create the folder 'Folder_for_Calculations' containing the CalcStarter.exe executable file and the subfolder 'Folder_for_Calculations\Modules' containing all 18 necessary executable files. When running programs (modules), DLL files may be required, which must be placed to the 'Modules' folder. For user convenience, we have placed the main DLL files in the 'Folder_for_Calculations/Modules/' folder in https://github.com/Persova-LMDPHT/FDEM_BfiPF. 
+   - The [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) commands will create the folder 'Folder_for_Calculations' containing the CalcStarter.exe executable file and the subfolder 'Folder_for_Calculations\Modules' containing all 18 necessary executable files. When running programs (modules), DLL files may be required, which must be placed to the 'Modules' folder. For user convenience, we have placed the main DLL files in the ['Folder_for_Calculations/Modules/'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations/Modules) folder in https://github.com/Persova-LMDPHT/FDEM_BfiPF. 
 
 Your 'Folder_for_Calculations' is ready to use! 
 
 To perform the calculation, add Input files (they are described below) to the 'Folder_for_Calculations' and run CalcStarter.exe.
 
 2. Microsoft Visual Studio
-To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file “Instruction_for_Modules_Build_in_Visual Studio.pdf”.
+To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file [“Instruction_for_Modules_Build_in_Visual Studio.pdf”](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
 
 
 ## How to run calculation
 
 To run calculation follow the steps **(do not use long paths to the directory for calculation!!!)**:
-1. Build all programs from folder 'CODE' and go to item 2 
-   or use a ready-made folder for calculation  with already assembled programs (folder 'Folder for Calculations') and go to item 7.
+1. Build all programs from folder ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) and go to item 2 
+   or use a ready-made folder for calculation  with already assembled programs (folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations)) and go to item 7.
 2. Create empty directory for calculation running (let's denote it as Home directory). *Do not use long paths to the directory for calculation!!!*
 3. Create 'Modules' directory inside of Home directory.
 4. Put all calculation programs (av.exe, bound.exe, CalcFreq.exe, CalcHarm2D_Ax.exe, CalcHarm2DHEL.exe, CalcHarm2DHEL_AV.exe, CalcHarm2DHEL_U.exe, CalcHarm3D.exe, Mesh2D_FD.exe, OutputSmooth2DHarm_Ax.exe, OutputSmooth2DHarm_U.exe, OutputSmoothAV2DHarm_Ax.exe, OutputSmoothAV2DHarm_Er.exe, OutputSmoothAV2DHarm_Ez.exe, RegularMeshBuilder.exe, SumHarm2D3D.exe, u.exe, UnloadAnomalHarm.exe) to 'Modules'
