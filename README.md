@@ -50,13 +50,13 @@ To build all programs (modules) you can use one of the following methods:
 
    - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat), first change the path to the folder with *.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
 
-   - Run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). Errors and warnings during module compilation are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
+   - Run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). The compiler messages are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
 
    - The [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) commands will create the folder 'Folder_for_Calculations' containing the CalcStarter.exe executable file and the subfolder 'Folder_for_Calculations\Modules' containing all 18 necessary executable files. When running programs (modules), DLL files may be required, which must be placed to the 'Modules' folder. For user convenience, we have placed the main DLL files in the ['Folder_for_Calculations/Modules/'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations/Modules) folder in https://github.com/Persova-LMDPHT/FDEM_BfiPF. 
 
 Your 'Folder_for_Calculations' is ready to use! 
 
-To perform the calculation, add Input files (they are described below) to the 'Folder_for_Calculations' and run CalcStarter.exe.
+To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample)) to the 'Folder_for_Calculations' and run CalcStarter.exe.
 
 2. Microsoft Visual Studio
 To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file [“Instruction_for_Modules_Build_in_Visual Studio.pdf”](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
