@@ -6,8 +6,26 @@ In this method the desired field is sought by solving several axisymmetric probl
 Its advantages over known semi-analytical methods are manifested when 3D EM fields are calculated using the primary-secondary field approach and the simulated medium contains a sufficiently large number of 3D inhomogeneities. 
 In the proposed method, the primary field of a HEL is represented as a sum of several axisymmetric fields whose origins are located at different points of the grounded electric line (field source). 
 In this representation, the main components of the desired primary field are the fields of radial and point sources. 
-An important characteristic of the proposed approach is that it completely eliminates the mutual subtraction of the components of the desired field and requires solving only two scalar axisymmetric problems. 
-Program language: C++, Fortran
+An important characteristic of the proposed approach is that it completely eliminates the mutual subtraction of the components of the desired field and requires solving only two scalar axisymmetric problems.  
+
+Program language: C++, Fortran  
+
+---
+
+##### The title of the manuscript: 
+*Primary-secondary field approach to modeling frequency-domain 3D geoelectromagnetic field with FE approximation of primary field excited by a grounded horizontal electric line*  
+
+##### The author details:
+
+Yuri G. Soloveichik(a), Marina G. Persova(b*), Denis V. Vagin(c), and Yulia I. Koshkina(d)  
+
+(a) Novosibirsk State Technical University, Novosibirsk, 630073, Russia, ORCID: 0000-0003-2843-3214  
+(b) Novosibirsk State Technical University, Novosibirsk, 630073, Russia, ORCID: 0000-0003-1425-3538  
+(c) Novosibirsk State Technical University, Novosibirsk, 630073, Russia, ORCID: 0000-0002-2739-9563  
+(d) Novosibirsk State Technical University, Novosibirsk, 630073, Russia, ORCID: 0000-0002-2684-4338  
+* Corresponding author.  
+E-mail address: mpersova@mail.ru (Marina G. Persova).  
+
 
 ## Requirements     
                     
@@ -30,7 +48,7 @@ To build all programs (modules) you can use one of the following methods:
 1. MinGW ("Minimalist GNU for Windows") 
    - To build modules using MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) you can use the following [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) as an instruction (you must first install Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
 
-   - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat), first change the path to the folder with `*`.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
+   - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat), first change the path to the folder with *.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
 
    - Run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). Errors and warnings during module compilation are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
 
