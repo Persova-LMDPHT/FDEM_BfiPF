@@ -56,7 +56,7 @@ To build all programs (modules) you can use one of the following methods:
 
 Your 'Folder_for_Calculations' is ready to use! 
 
-To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample)) to the 'Folder_for_Calculations' and run CalcStarter.exe.
+To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample) to the 'Folder_for_Calculations' and run CalcStarter.exe.
 
 2. Microsoft Visual Studio
 To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file [“Instruction_for_Modules_Build_in_Visual Studio.pdf”](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
