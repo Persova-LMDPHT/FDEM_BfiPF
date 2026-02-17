@@ -1,4 +1,5 @@
-**This folder contains the folders with examples of input files and calculation results for various geoelectric models.**
+## This folder contains the folders with examples of input files and calculation results for various geoelectric models.
+
 Descriptions of the input and result files are given below.
 
 ## Input files (layers, objects, gen, recE, recB, settings.cfg)
