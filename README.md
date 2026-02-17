@@ -66,18 +66,18 @@ To build programs (modules) in Microsoft Visual Studio, please see section ‘Re
 
 ## How to run calculation
 
-To run calculation follow the steps **(do not use too long paths to the directory for calculations and special characters in it)**:
+To run calculation follow the steps **(do not use special characters and too long paths to the folder for calculations)**:
 1. Build all programs from folder ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) and go to step 2 
    or use a ready-made folder for calculation  with already built programs (folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations)) and go to step 7.
-2. Create empty directory for calculation running (let's denote it as Test directory). *Do not use too long paths to the directory for calculations and special characters in it!*
-3. Create 'Modules' directory inside of Test directory.
+2. Create empty folder for calculation running (let's denote it as 'Test' folder). *Do not use special characters and too long paths to the folder for calculations!*
+3. Create 'Modules' folder inside of 'Test' folder.
 4. Put all calculation programs (av.exe, bound.exe, CalcFreq.exe, CalcHarm2D_Ax.exe, CalcHarm2DHEL.exe, CalcHarm2DHEL_AV.exe, CalcHarm2DHEL_U.exe, CalcHarm3D.exe, Mesh2D_FD.exe, OutputSmooth2DHarm_Ax.exe, OutputSmooth2DHarm_U.exe, OutputSmoothAV2DHarm_Ax.exe, OutputSmoothAV2DHarm_Er.exe, OutputSmoothAV2DHarm_Ez.exe, RegularMeshBuilder.exe, SumHarm2D3D.exe, u.exe, UnloadAnomalHarm.exe) to 'Modules'
-5. (If needed) Put required dll files to ' Modules' directory.
+5. (If needed) Put required dll files to 'Modules' folder.
 6. Put CalcStarter.exe to Test directory.
 *The example of the ready-made folder for calculation with already assembled programs is in folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF*
-7. Put all prepared text files (gen, layers, objects, recE, recB, settings.cfg) to Test directory.
+7. Put all prepared input text files (gen, layers, objects, recE, recB, settings.cfg) to 'Test' folder.   You can take already prepared input files from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample).
 8. Run CalcStarter.exe and wait for it to complete.
-9. Look for result file (e2d.1, e3d.1) in 'Results' directory inside of Test directory.
+9. Look for result file (e2d.1, e3d.1) in 'Results' folder inside of 'Test' folder.
 
 
 ##### ♦ All lengths are in meters. In the calculations, the transmitter current is taken equal to 1 A.
