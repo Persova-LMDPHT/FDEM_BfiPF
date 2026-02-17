@@ -42,7 +42,7 @@ Build (two ways):
 
 Already built programs (modules) for Windows are in folder ['Folder_for_Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF.   
 
-If you want to build all programs (modules) yourself, download the contents of the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The 'CODE' folder contains the source code for all modules (each module is located in its own folder within the 'CODE' folder, with the same folder name as the module).   
+If you want to build all programs (modules) yourself, download the contents of the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder contains the source code for all modules (each module is located in its own folder within the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder, with the same folder name as the module).   
 To build all programs (modules) you can use one of the following methods:   
 
 1. MinGW ("Minimalist GNU for Windows")  
@@ -57,7 +57,7 @@ To build all programs (modules) you can use one of the following methods:
 
 If everything is done correctly, your 'Folder_for_Calculations' is ready to use!   
 
-To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample)) to the 'Folder_for_Calculations' and run CalcStarter.exe.
+To perform the calculation, add input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample)) to the 'Folder_for_Calculations' and run CalcStarter.exe.
 
 2. Microsoft Visual Studio   
 
