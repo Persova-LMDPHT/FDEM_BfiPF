@@ -1,0 +1,32 @@
+**This folder contains the source code for all modules (each module is located in its own folder, with the same folder name as the module).**
+If you want to build all programs (modules) yourself, download the contents of this folder and use [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/731ce1cca237ad1e70d51f6a0f91fb799bf2d7e6/CODE/makefile.bat) as an instruction (you must first install MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) and Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
