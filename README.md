@@ -29,9 +29,11 @@ E-mail address: mpersova@mail.ru (Marina G. Persova).
 
 ## Requirements     
                     
-Features of the type of implementing computer or other computing device:  a personal computer based on 64-bit Intel or AMD processors.  
-Operating system type and version: Windows 10 and later.  
-Build (two ways):
+**Features of the type of implementing computer or other computing device:**  a personal computer based on 64-bit Intel or AMD processors. 
+ 
+**Operating system type and version:** Windows 10 and later. 
+ 
+**Build (two ways):**
 1. To compile using MinGW ("Minimalist GNU for Windows") for 64-bit versions of Windows (we use version 15.2.0), you must also install the Intel oneAPI Base Toolkit (we use version 2025.2), which includes the Intel oneAPI Math Kernel Library.
 
 2. To build programs in Microsoft Visual Studio Community 2022 (we use version 17.14.18 (October 2025)) you must also install:
@@ -79,10 +81,10 @@ To run calculation follow the steps **(do not use special characters and too lon
 8. Run CalcStarter.exe and wait for it to complete.
 9. Look for result file (e2d.1, e3d.1) in 'Results' folder inside of 'Test' folder.
 
+## Input files (layers, objects, gen, recE, recB, settings.cfg)
 
 ##### ♦ All lengths are in meters. In the calculations, the transmitter current is taken equal to 1 A.
 
-## Input files (layers, objects, gen, recE, recB, settings.cfg)
 #### 1. layers
 This file contains the resistivity of layers defined in the model. **Do not include air in this file. The air layer will be added automatically**
 
