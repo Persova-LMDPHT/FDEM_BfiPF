@@ -183,4 +183,4 @@ File format:
 ```
 <Re_Bx, T> <Re_By, T>  <Re_Bz, T> <Im_Bx, T> <Im_By, T> <Im_Bz, T>
 ```
-The result files are in the 'Results' directory inside of the folder for calculation.
+The result files are in the 'Results' folder inside the folder for calculation.
