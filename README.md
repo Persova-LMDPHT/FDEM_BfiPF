@@ -33,52 +33,54 @@ Features of the type of implementing computer or other computing device:  a pers
 Operating system type and version: Windows 10 and later.  
 Build (two ways):
 1. To compile using MinGW ("Minimalist GNU for Windows") for 64-bit versions of Windows (we use version 15.2.0), you must also install the Intel oneAPI Base Toolkit (we use version 2025.2), which includes the Intel oneAPI Math Kernel Library.
+
 2. To build programs in Microsoft Visual Studio Community 2022 (we use version 17.14.18 (October 2025)) you must also install:
     - Intel Fortran Compiler (we use version 2025.3.0);
     - Intel oneAPI Base Toolkit (we use version 2025.2), which include the Intel oneAPI Math Kernel Library.
 
 ## How to build
 
-Already assembled programs (modules) for Windows are in folder ['Folder_for_Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF.
+Already built programs (modules) for Windows are in folder ['Folder_for_Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF.   
 
-To rebuild all programs (modules), download the contents of the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The 'CODE' folder contains the source code for all modules (each module is located in its own folder within the 'CODE' folder, with the same folder name as the module). 
+If you want to build all programs (modules) yourself, download the contents of the ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) folder from https://github.com/Persova-LMDPHT/FDEM_BfiPF. The 'CODE' folder contains the source code for all modules (each module is located in its own folder within the 'CODE' folder, with the same folder name as the module).   
+To build all programs (modules) you can use one of the following methods:   
 
-To build all programs (modules) you can use one of the following methods:
+1. MinGW ("Minimalist GNU for Windows")  
+ 
+   - To build modules using MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) you can use the following [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/731ce1cca237ad1e70d51f6a0f91fb799bf2d7e6/CODE/makefile.bat) as an instruction (you must first install Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
 
-1. MinGW ("Minimalist GNU for Windows") 
-   - To build modules using MinGW ("Minimalist GNU for Windows" for 64-bit versions of Windows (we use version 15.2.0)) you can use the following [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) as an instruction (you must first install Intel oneAPI (we use version 2025.2), which should include the Intel oneAPI Math Kernel Library).
+   - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/731ce1cca237ad1e70d51f6a0f91fb799bf2d7e6/CODE/makefile.bat), first change the path to the folder with *.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
 
-   - In [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat), first change the path to the folder with *.h MKL files (variable %PATH_TO_MKL_INCLUDES%) and the path to the folder with MKL libraries (variable %PATH_TO_MKL_LIBS%) to the paths corresponding to your computer.
+   - Go to the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name) and run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/731ce1cca237ad1e70d51f6a0f91fb799bf2d7e6/CODE/makefile.bat) there. The compiler messages are displayed in !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
 
-   - Run [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) in the folder containing the source code for all modules (each module is located in its own folder, the folder name matches the module name). The compiler messages are displayed in the !logg++.txt or !loggfortran.txt files in the folder containing the corresponding module's source code.
+   - The [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/731ce1cca237ad1e70d51f6a0f91fb799bf2d7e6/CODE/makefile.bat) commands will create the folder 'Folder_for_Calculations' containing the CalcStarter.exe executable file and the subfolder 'Folder_for_Calculations\Modules' containing all 18 necessary executable files. When running programs (modules), DLL files may be required, which must be placed to the 'Modules' folder. For user convenience, we have placed the main DLL files in the ['Folder_for_Calculations/Modules/'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations/Modules) folder in https://github.com/Persova-LMDPHT/FDEM_BfiPF. 
 
-   - The [makefile.bat](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE/makefile.bat) commands will create the folder 'Folder_for_Calculations' containing the CalcStarter.exe executable file and the subfolder 'Folder_for_Calculations\Modules' containing all 18 necessary executable files. When running programs (modules), DLL files may be required, which must be placed to the 'Modules' folder. For user convenience, we have placed the main DLL files in the ['Folder_for_Calculations/Modules/'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations/Modules) folder in https://github.com/Persova-LMDPHT/FDEM_BfiPF. 
+If everything is done correctly, your 'Folder_for_Calculations' is ready to use!   
 
-Your 'Folder_for_Calculations' is ready to use! 
+To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample)) to the 'Folder_for_Calculations' and run CalcStarter.exe.
 
-To perform the calculation, add Input files (they are described below) from ['CalculationExample'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/89293a537e8dbebc5c7704a6e67aa143482e42f4/CalculationExample) to the 'Folder_for_Calculations' and run CalcStarter.exe.
+2. Microsoft Visual Studio   
 
-2. Microsoft Visual Studio
-To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file [“Instruction_for_Modules_Build_in_Visual Studio.pdf”](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
+To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file ['Instruction_for_Modules_Build_in_Visual Studio.pdf'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
 
 
 ## How to run calculation
 
-To run calculation follow the steps **(do not use long paths to the directory for calculation!!!)**:
-1. Build all programs from folder ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) and go to item 2 
-   or use a ready-made folder for calculation  with already assembled programs (folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations)) and go to item 7.
-2. Create empty directory for calculation running (let's denote it as Home directory). *Do not use long paths to the directory for calculation!!!*
-3. Create 'Modules' directory inside of Home directory.
+To run calculation follow the steps **(do not use too long paths to the directory for calculations and special characters in it)**:
+1. Build all programs from folder ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) and go to step 2 
+   or use a ready-made folder for calculation  with already built programs (folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations)) and go to step 7.
+2. Create empty directory for calculation running (let's denote it as Test directory). *Do not use too long paths to the directory for calculations and special characters in it!*
+3. Create 'Modules' directory inside of Test directory.
 4. Put all calculation programs (av.exe, bound.exe, CalcFreq.exe, CalcHarm2D_Ax.exe, CalcHarm2DHEL.exe, CalcHarm2DHEL_AV.exe, CalcHarm2DHEL_U.exe, CalcHarm3D.exe, Mesh2D_FD.exe, OutputSmooth2DHarm_Ax.exe, OutputSmooth2DHarm_U.exe, OutputSmoothAV2DHarm_Ax.exe, OutputSmoothAV2DHarm_Er.exe, OutputSmoothAV2DHarm_Ez.exe, RegularMeshBuilder.exe, SumHarm2D3D.exe, u.exe, UnloadAnomalHarm.exe) to 'Modules'
 5. (If needed) Put required dll files to ' Modules' directory.
-6. Put CalcStarter.exe to Home directory.
+6. Put CalcStarter.exe to Test directory.
 *The example of the ready-made folder for calculation with already assembled programs is in folder ['Folder for Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF*
-7. Put all prepared text files (gen, layers, objects, recE, recB, settings.cfg) to Home directory.
+7. Put all prepared text files (gen, layers, objects, recE, recB, settings.cfg) to Test directory.
 8. Run CalcStarter.exe and wait for it to complete.
-9. Look for result file (e2d.1, e3d.1) in 'Results' directory inside of Home directory.
+9. Look for result file (e2d.1, e3d.1) in 'Results' directory inside of Test directory.
 
 
-##### ♦ All dimensions are in meters. In the calculations, the transmitter current is taken equal to 1 A.
+##### ♦ All lengths are in meters. In the calculations, the transmitter current is taken equal to 1 A.
 
 ## Input files (layers, objects, gen, recE, recB, settings.cfg)
 #### 1. layers
