@@ -6,7 +6,7 @@ set "PATH_TO_MKL_INCLUDES=C:/Program Files (x86)/Intel/oneAPI/mkl/2025.2/include
 set "PATH_TO_MKL_LIBS=C:/Program Files (x86)/Intel/oneAPI/mkl/2025.2/lib"
 :: build Module av.exe 
 cd ./av
-"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp in_out.cpp Local_matrix_rz.cpp MeshRZ.cpp pardiso.cpp Portret.cpp stdafx.cpp VEL2D.cpp VelHarm2d.cpp -l mkl_intel_lp64 -l mkl_intel_lp64_dll -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o av 2>!logg++.txt 
+"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp in_out.cpp Local_matrix_rz.cpp MeshRZ.cpp pardiso.cpp Portret.cpp stdafx.cpp VEL2D.cpp VelHarm2d.cpp -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o av 2>!logg++.txt 
 copy av.exe  %PATHTOCALCFOLDER%Modules 
 cd ../
 :: build Module bound.exe 
@@ -36,12 +36,12 @@ copy CalcHarm2DHEL_U.exe  %PATHTOCALCFOLDER%Modules
 cd ../
 :: build Module CalcHarm2D_Ax.exe 
 cd ./CalcHarm2D_Ax 
-"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp Harm2D.cpp Harm2dLine.cpp in_out.cpp iobinary.cpp localcontributions.cpp pardiso.cpp Portret.cpp rect_local_matrix_2d.cpp rect_postproc_2d.cpp stdafx.cpp -l mkl_intel_lp64 -l mkl_intel_lp64_dll -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o CalcHarm2D_Ax 2> !logg++.txt 
+"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp Harm2D.cpp Harm2dLine.cpp in_out.cpp iobinary.cpp localcontributions.cpp pardiso.cpp Portret.cpp rect_local_matrix_2d.cpp rect_postproc_2d.cpp stdafx.cpp -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o CalcHarm2D_Ax 2> !logg++.txt 
 copy CalcHarm2D_Ax.exe  %PATHTOCALCFOLDER%Modules 
 cd ../
 :: build Module CalcHarm3D.exe  
 cd ./CalcHarm3D
-"g++.exe" -static -O2  -std=c++14 -fopenmp -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" base_solver.cpp block_2x2_solver.cpp bound_cond_vec_harm.cpp CheckInHex.cpp ControlOMP.cpp ElemNeib.cpp FoldedPreconditioner.cpp FormatConverter.cpp For_Solvers.cpp give_out_vec_mt.cpp HarmVect3d.cpp Hex_Local_Matrix.cpp in_out.cpp iobinary.cpp MRS.cpp OutputArbitrary.cpp OutputResultant3d.cpp pardiso.cpp pcocr.cpp pcocr_rci.cpp Portret.cpp rci.cpp stdafx.cpp Subdomain.cpp T_Brick.cpp t_global_slae.cpp T_Mapping.cpp T_Portrait.cpp vec_prep_data.cpp -lpthread -l mkl_intel_lp64 -l mkl_intel_lp64_dll -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll  -o CalcHarm3D  2> !logg++.txt
+"g++.exe" -static -O2  -std=c++14 -fopenmp -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" base_solver.cpp block_2x2_solver.cpp bound_cond_vec_harm.cpp CheckInHex.cpp ControlOMP.cpp ElemNeib.cpp FoldedPreconditioner.cpp FormatConverter.cpp For_Solvers.cpp give_out_vec_mt.cpp HarmVect3d.cpp Hex_Local_Matrix.cpp in_out.cpp iobinary.cpp MRS.cpp OutputArbitrary.cpp OutputResultant3d.cpp pardiso.cpp pcocr.cpp pcocr_rci.cpp Portret.cpp rci.cpp stdafx.cpp Subdomain.cpp T_Brick.cpp t_global_slae.cpp T_Mapping.cpp T_Portrait.cpp vec_prep_data.cpp -lpthread -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll  -o CalcHarm3D  2> !logg++.txt
 copy CalcHarm3D.exe  %PATHTOCALCFOLDER%Modules
 cd ../
 :: build Module Mesh2D_FD.exe  
@@ -86,7 +86,7 @@ copy SumHarm2D3D.exe  %PATHTOCALCFOLDER%Modules
 cd ../ 
 :: build Module u.exe  
 cd ./u
-"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp in_out.cpp Local_matrix_rz.cpp MeshRZ.cpp pardiso.cpp Portret.cpp stdafx.cpp VEL2D.cpp VelHarm2d.cpp -l mkl_intel_lp64 -l mkl_intel_lp64_dll -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o u  2> !logg++.txt
+"g++.exe" -static -O2  -std=c++14 -I "%PATH_TO_MKL_INCLUDES%" -L "%PATH_TO_MKL_LIBS%" bound_cond_2d.cpp FormatConverter.cpp For_Solvers.cpp global_slae_2d.cpp in_out.cpp Local_matrix_rz.cpp MeshRZ.cpp pardiso.cpp Portret.cpp stdafx.cpp VEL2D.cpp VelHarm2d.cpp -l mkl_core_dll -l mkl_intel_thread_dll -l mkl_rt -l mkl_sequential_dll -o u  2> !logg++.txt
 copy u.exe  %PATHTOCALCFOLDER%Modules 
 cd ../
 :: build Module UnloadAnomalHarm.exe  
@@ -99,3 +99,28 @@ cd ./CalcStarter
 "g++.exe" -static -O2  -std=c++14 main.cpp -o CalcStarter 2> !logg++.txt
 copy CalcStarter.exe  %PATHTOCALCFOLDER%       
 cd ../
+
+::set "MKL_BIN=C:\Miniforge3\envs\mkl_env\Library\bin"
+set "MKL_BIN=C:\Program Files (x86)\Intel\oneAPI\mkl\2025.2\bin"
+set "COMPILER_BIN=C:\Program Files (x86)\Intel\oneAPI\compiler\latest\bin"
+set "DLL_OUT=C:\CODE\Folder_for_Calculations\Modules"
+
+for %%F in (
+	mkl_rt.2.dll
+	mkl_avx2.2.dll
+	mkl_core.2.dll
+	mkl_def.2.dll
+	mkl_intel_thread.2.dll
+	mkl_mc3.2.dll
+	mkl_sequential.2.dll
+) do (
+    if exist "%MKL_BIN%\%%F" copy /Y "%MKL_BIN%\%%F" "%DLL_OUT%\" >nul
+)
+
+for %%F in (
+	libiomp5md.dll
+	svml_dispmd.dll
+	libmmd.dll
+) do (
+	if exist "%COMPILER_BIN%\%%F" copy /Y "%COMPILER_BIN%\%%F" "%DLL_OUT%\" >nul
+)

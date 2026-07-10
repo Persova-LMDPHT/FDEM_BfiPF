@@ -1,0 +1,26 @@
+services:
+  fdem-calculator:
+  # docker-compose build fdem-calculator
+  # docker-compose run -T --rm fdem-calculator
+    build:
+      context: .  
+      dockerfile: Dockerfile.run
+    volumes:
+      - ./Test:C:/app
+      - ./Folder_for_Calculations/Modules:C:/app/Modules:ro
+      - ./Folder_for_Calculations:C:/Folder_for_Calculations:ro
+      - ./Test/Results:C:/app/Results
+    command: >
+      powershell -Command "
+        Copy-Item -Path 'C:/Folder_for_Calculations/CalcStarter.exe' -Destination 'C:/app/CalcStarter.exe' -Force -ErrorAction Stop;
+        & 'C:/app/CalcStarter.exe'
+      "
+  fdem-builder:
+  # docker-compose build fdem-builder
+  # docker-compose run -T --rm fdem-builder
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    volumes:
+      - ./CODE:C:/CODE
+      - ./Folder_for_Calculations:C:/CODE/Folder_for_Calculations

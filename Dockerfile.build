@@ -1,0 +1,37 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
+
+# ── Chocolatey ───────────────────────────────────────────────
+RUN Set-ExecutionPolicy Bypass -Scope Process -Force; \
+    [System.Net.ServicePointManager]::SecurityProtocol = \
+        [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; \
+    iex ((New-Object System.Net.WebClient).DownloadString( \
+        'https://community.chocolatey.org/install.ps1'))
+
+# ── MinGW-w64  (g++.exe  +  gfortran.exe) ───────────────────
+RUN choco install mingw --version=15.2.0 -y --no-progress
+
+# ── MinGW in PATH ─────────────────────────────────
+RUN $bin = 'C:\ProgramData\mingw64\mingw64\bin'; \
+    if (Test-Path $bin) { \
+        $cur = [Environment]::GetEnvironmentVariable('PATH','Machine'); \
+        if ($cur -notlike \"*$bin*\") { \
+            [Environment]::SetEnvironmentVariable('PATH', \"$bin;$cur\", 'Machine') \
+        } \
+    }
+
+# ── Intel oneMKL offline installer ───────────────────────────
+#COPY installers/intel-onemkl-2025.2.0.630_offline.exe C:/installers/
+RUN mkdir -Force C:\installers
+RUN powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13; \
+    Invoke-WebRequest -Uri 'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/307bccae-8631-4712-8999-02a8abf51994/intel-onemkl-2025.2.0.630_offline.exe' \
+    -OutFile 'C:\installers\intel-onemkl-2025.2.0.630_offline.exe' -UseBasicParsing"
+
+RUN C:/installers/intel-onemkl-2025.2.0.630_offline.exe -s -x -f C:\installers\extracted
+RUN Start-Process -FilePath 'C:\installers\extracted\bootstrapper.exe' -ArgumentList @('-s','--action','install','--eula=accept','--silent','--components=intel.oneapi.win.mkl.devel') -Wait
+
+
+WORKDIR C:/CODE
+
+CMD ["cmd", "/c", "makefile.bat"]
