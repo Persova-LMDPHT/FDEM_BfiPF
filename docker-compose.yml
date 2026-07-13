@@ -1,10 +1,11 @@
 services:
   fdem-calculator:
-  # docker-compose build fdem-calculator
+  # docker-compose build --no-cache fdem-calculator
   # docker-compose run -T --rm fdem-calculator
     build:
       context: .  
       dockerfile: Dockerfile.run
+    isolation: hyperv
     volumes:
       - ./Test:C:/app
       - ./Folder_for_Calculations/Modules:C:/app/Modules:ro
@@ -16,11 +17,12 @@ services:
         & 'C:/app/CalcStarter.exe'
       "
   fdem-builder:
-  # docker-compose build fdem-builder
+  # docker-compose build --no-cache fdem-builder
   # docker-compose run -T --rm fdem-builder
     build:
       context: .
       dockerfile: Dockerfile.build
+    isolation: hyperv
     volumes:
       - ./CODE:C:/CODE
       - ./Folder_for_Calculations:C:/CODE/Folder_for_Calculations
