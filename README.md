@@ -74,7 +74,7 @@ Once the images and modules in the Folder_for_Calculations folder are built, the
 
 ##### ♦ Comment:
 
-*Note that we use Docker in Windows 11 and instead of Docker Desktop, we use Docker CE, which is installed using the following commands:*<br>
+*We recommend using Docker on Windows 11, and instead of Docker Desktop, use Docker CE, which is installed using the following commands:*<br>
 ```Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1```<br>
 
 ```.\install-docker-ce.ps1```<br>
