@@ -1,4 +1,4 @@
-﻿## The name of the program: FDEM_BfiPF
+## The name of the program: FDEM_BfiPF
 ## Description
 
 FDEM_BfiPF is a program that implements the numerical method for calculating the frequency-domain electromagnetic (EM) field of a grounded horizontal electric line (HEL) in an anisotropic horizontally layered medium.
@@ -44,6 +44,8 @@ E-mail address: mpersova@mail.ru (Marina G. Persova).
 
 
 ## How to build programs and run calculation with Docker 
+
+
 ```
 git clone https://github.com/Persova-LMDPHT/FDEM_BfiPF.git
 cd FDEM_BfiPF
@@ -65,14 +67,20 @@ Explanations
 | ```docker-compose run -T --rm fdem-calculator``` | The calculation runs in the Test folder. |
 
 Although the compiled exe-files will be located in the Folder_for_Calculations folder, the log-files will be placed in folders inside the CODE directory.
-
 The `docker-compose build fdem-builder` and `docker-compose build fdem-calculator` commands can be run simultaneously.
-
 The `docker-compose run -T --rm fdem-builder` command can only be run after the `docker-compose build fdem-builder` command (this command must be executed at least once).
-
 The `docker-compose run -T --rm fdem-calculator` command can only be run after the other three commands have completed (each command must be executed at least once).
-
 Once the images and modules in the Folder_for_Calculations folder are built, the `docker-compose run -T --rm fdem-calculator` command can be run immediately after copying the necessary data to the Test folder, without running any other commands.
+
+##### ♦ Comment:
+
+*Note that we use Docker in Windows 11 and instead of Docker Desktop, we use Docker CE, which is installed using the following commands:*<br>
+```Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1```<br>
+
+```.\install-docker-ce.ps1```<br>
+
+```Invoke-WebRequest -UseBasicParsing "https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-windows-x86_64.exe" -OutFile "$env:ProgramFiles\Docker\docker-compose.exe"``` 
+
 
 ## How to build programs (without Docker)
 
