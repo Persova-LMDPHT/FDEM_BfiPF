@@ -33,14 +33,48 @@ E-mail address: mpersova@mail.ru (Marina G. Persova).
  
 **Operating system type and version:** Windows 10 and later. 
  
-**Build (two ways):**
-1. To compile using MinGW ("Minimalist GNU for Windows") for 64-bit versions of Windows (we use version 15.2.0), you must also install the Intel oneAPI Base Toolkit (we use version 2025.2), which includes the Intel oneAPI Math Kernel Library.
+**Build (three ways):**
+1. To compile using Docker.
 
-2. To build programs in Microsoft Visual Studio Community 2022 (we use version 17.14.18 (October 2025)) you must also install:
+2. To compile using MinGW ("Minimalist GNU for Windows") for 64-bit versions of Windows (we use version 15.2.0), you must also install the Intel oneAPI Base Toolkit (we use version 2025.2), which includes the Intel oneAPI Math Kernel Library.
+
+3. To build programs in Microsoft Visual Studio Community 2022 (we use version 17.14.18 (October 2025)) you must also install:
     - Intel Fortran Compiler (we use version 2025.3.0);
     - Intel oneAPI Base Toolkit (we use version 2025.2), which include the Intel oneAPI Math Kernel Library.
 
-## How to build
+
+## How to build programs and run calculation with Docker 
+```
+git clone https://github.com/Persova-LMDPHT/FDEM_BfiPF.git
+cd FDEM_BfiPF
+docker-compose build --no-cache fdem-builder
+docker-compose build --no-cache fdem-calculator
+docker-compose run -T --rm fdem-builder
+xcopy "CalculationExample\1_horizontally_layered_medium1\AV-formulation\AV_1Hz\*" "Test\" /E /I /Y
+docker-compose run -T --rm fdem-calculator
+```
+Explanations
+| Сommand  | Explanations |
+| ------------- |:-------------:|
+| ```git clone https://github.com/Persova-LMDPHT/FDEM_BfiPF.git```| Copy the repository contents to your local computer. <br>1. A new folder with the repository name FDEM_BfiPF will appear in the current directory on your computer (where you opened the terminal). <br>2. All folders and files from the GitHub repository will be downloaded to the FDEM_BfiPF folder: the source code folder (CODE), the calculation example folder (CalculationExample), the example of calculation folder (Folder_for_Calculations), documentation, and build files (such as docker-compose.yml, Dockerfile.build, Dockerfile.run, and makefile.bat).|
+| ```cd FDEM_BfiPF``` | Go to the downloaded folder FDEM_BfiPF |
+| ```docker-compose build --no-cache fdem-builder``` | Build a container image for building programs |
+| ```docker-compose build --no-cache fdem-calculator``` | Build a container image to run programs. The folder where the command is run should contain a folder named Folder_for_Calculations. |
+| ```docker-compose run -T --rm fdem-builder``` | Run the fdem-builder container, the image of which was built by the previous command. This command requires a CODE folder containing the program sources and the makefile.bat file, as well as a Folder_for_Calculations folder in the repository root. This folder will contain all built exe-files and some MKL DLLs (if the folder wasn't empty, the old modules will be replaced with the newly built ones).|
+| ```xcopy "CalculationExample\1_horizontally_layered_medium1\AV-formulation\AV_1Hz\*" "Test\" /E /I /Y``` | To run calculations on tests, copy the contents from the CalculationExample folder, for example, CalculationExample\1_horizontally_layered_medium1\AV-formulation\AV_1Hz\ to the Test folder in the root of the repository. |
+| ```docker-compose run -T --rm fdem-calculator``` | The calculation runs in the Test folder. |
+
+Although the compiled exe-files will be located in the Folder_for_Calculations folder, the log-files will be placed in folders inside the CODE directory.
+
+The `docker-compose build fdem-builder` and `docker-compose build fdem-calculator` commands can be run simultaneously.
+
+The `docker-compose run -T --rm fdem-builder` command can only be run after the `docker-compose build fdem-builder` command (this command must be executed at least once).
+
+The `docker-compose run -T --rm fdem-calculator` command can only be run after the other three commands have completed (each command must be executed at least once).
+
+Once the images and modules in the Folder_for_Calculations folder are built, the `docker-compose run -T --rm fdem-calculator` command can be run immediately after copying the necessary data to the Test folder, without running any other commands.
+
+## How to build programs (without Docker)
 
 Already built programs (modules) for Windows are in folder ['Folder_for_Calculations'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Folder_for_Calculations) in https://github.com/Persova-LMDPHT/FDEM_BfiPF.   
 
@@ -66,7 +100,7 @@ To perform the calculation, add input files (they are described below) from ['Ca
 To build programs (modules) in Microsoft Visual Studio, please see section ‘Requirements’ and read the file ['Instruction_for_Modules_Build_in_Visual_Studio.pdf'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/blob/aecd255a0692bd37c58a5bb66d2b673e3c49d496/Instruction_for_Modules_Build_in_Visual%20Studio.pdf).
 
 
-## How to run calculation
+## How to run calculation (without Docker)
 
 To run calculation follow the steps **(do not use special characters and too long paths to the folder for calculations)**:
 1. Build all programs from folder ['CODE'](https://github.com/Persova-LMDPHT/FDEM_BfiPF/tree/aecd255a0692bd37c58a5bb66d2b673e3c49d496/CODE) and go to step 2 
