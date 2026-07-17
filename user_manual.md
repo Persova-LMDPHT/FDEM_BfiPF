@@ -56,7 +56,7 @@ xcopy "CalculationExample\1_horizontally_layered_medium1\AV-formulation\AV_1Hz\*
 docker-compose run -T --rm fdem-calculator
 ```
 Explanations
-| Сommand  | Explanations |
+| Command  | Explanations |
 | ------------- |:-------------:|
 | ```git clone https://github.com/Persova-LMDPHT/FDEM_BfiPF.git```| Copy the repository contents to your local computer. <br>1. A new folder with the repository name FDEM_BfiPF will appear in the current directory on your computer (where you opened the terminal). <br>2. All folders and files from the GitHub repository will be downloaded to the FDEM_BfiPF folder: the source code folder (CODE), the calculation example folder (CalculationExample), the example of calculation folder (Folder_for_Calculations), documentation, and build files (such as docker-compose.yml, Dockerfile.build, Dockerfile.run, and makefile.bat).|
 | ```cd FDEM_BfiPF``` | Go to the downloaded folder FDEM_BfiPF |
