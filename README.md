@@ -13,7 +13,7 @@ Program language: C++, Fortran
 ---
 
 ##### The title of the manuscript: 
-*Primary-secondary field approach to modeling frequency-domain 3D geoelectromagnetic field with FE approximation of primary field excited by a grounded horizontal electric line*  
+*3D frequency-domain geoelectromagnetic modeling with a primary-secondary field approach*  
 
 ##### The author details:
 
